@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="bids"
+            type="com.mypakdriver.models.ModelShipBid.Result" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:background="@drawable/black_outline_back"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:fontFamily="@font/circular_bold"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            android:background="@color/lightorange"
+            android:textColor="@color/orange"
+            android:padding="@dimen/_8sdp"
+            android:text="@{'$'+bids.price}"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/black"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/circular_bold"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            android:singleLine="true"
+            android:textColor="@color/orange"
+            android:background="@color/lightorange"
+            android:padding="@dimen/_8sdp"
+            android:text="@{bids.pick_date}" />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvPickupTo"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:singleLine="true"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/circular_bold"
+            android:textColor="@color/orange"
+            android:background="@color/lightorange"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            android:padding="@dimen/_8sdp"
+            android:text="@{bids.drop_date}"/>
+
+    </LinearLayout>
+
+</layout>

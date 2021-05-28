@@ -1,4 +1,4 @@
-package com.cityonedriver.shipping.models;
+package com.mypakdriver.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

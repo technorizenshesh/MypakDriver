@@ -27,7 +27,7 @@ public class SignUpAct extends AppCompatActivity {
     Context mContext = SignUpAct.this;
     ActivitySignupBinding binding;
     private String registerId;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="parcel"
-            type="com.mypakuser.models.ModelShipRequest.Result" />
+            type="com.mypakdriver.models.ModelShipRequest.Result" />
     </data>
 
     <LinearLayout
@@ -114,6 +115,7 @@
                         android:layout_height="wrap_content"
                         android:text="@{parcel.bid_status}"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         android:paddingRight="@dimen/_15sdp"
                         android:paddingLeft="@dimen/_15sdp"
                         android:paddingTop="@dimen/_6sdp"

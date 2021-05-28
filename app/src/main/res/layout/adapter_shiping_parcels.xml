@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="parcel"
+            type="com.mypakuser.models.ModelShipRequest.Result" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:contentPadding="@dimen/_5sdp"
+            android:elevation="@dimen/_10sdp"
+            android:layout_margin="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/circular_bold"
+                    android:text="@string/pickup_address"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:inputType="textVisiblePassword" />
+
+                <TextView
+                    android:id="@+id/tvPickupAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circular_regular"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:drawableLeft="@drawable/ic_blue_location"
+                    android:textSize="@dimen/_9sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="@{parcel.pickup_location}"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/circular_bold"
+                    android:text="@string/dropoff_address"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:inputType="textVisiblePassword" />
+
+                <TextView
+                    android:id="@+id/DropOff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circular_regular"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:drawableLeft="@drawable/ic_blue_location"
+                    android:textSize="@dimen/_9sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="@{parcel.drop_location}"
+                    android:textColor="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Quantity : "
+                            android:textStyle="bold"
+                            android:fontFamily="@font/circular_bold"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/black"
+                            android:inputType="textVisiblePassword" />
+
+                        <TextView
+                            android:id="@+id/tvQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/circular_regular"
+                            android:text="@{parcel.parcel_quantity}"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/orange3"
+                            android:inputType="textVisiblePassword" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{parcel.bid_status}"
+                        android:textStyle="bold"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingTop="@dimen/_6sdp"
+                        android:paddingBottom="@dimen/_6sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/orange_outline_back"
+                        android:fontFamily="@font/circular_bold"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/green"
+                        android:inputType="textVisiblePassword" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btParcel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/orange_back_10"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:text="@string/parcel_detail" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</layout>

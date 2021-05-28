@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    app:civ_border_color="@color/white"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:civ_border_width="@dimen/_2sdp"
+                    android:src="@drawable/default_profile_icon"/>
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:fontFamily="@font/circular_bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:text="Jhon Marchal"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/_15sdp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMyTransport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_transports"
+                android:fontFamily="@font/circular_bold"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/tvMessages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/messages"
+                android:fontFamily="@font/circular_bold"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/tvMyProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_profile"
+                android:fontFamily="@font/circular_bold"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/tvChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_password"
+                android:fontFamily="@font/circular_bold"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:fontFamily="@font/circular_bold"
+                android:textColor="@color/black"
+                android:padding="@dimen/_10sdp"
+                android:background="?android:selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

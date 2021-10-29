@@ -2,7 +2,7 @@ package com.mypakdriver.utils;
 
 public interface AppConstant {
 
-    String BASE_URL = "https://shar-v.com/Mypak/webservice/";
+    String BASE_URL = "https://equipmeapp.co.nz/Mypak/webservice/";
     String IMAGE_URL = "https://www.pickpock.net/uploads/images/";
 
     String LOGIN_API = "login";
@@ -29,8 +29,8 @@ public interface AppConstant {
     String PROVIDER = "PROVIDER";
     String UPDATE_ORDER_STATUS = "update_order_status";
 
-
     String DRIVER = "DRIVER";
+
 }
 
 

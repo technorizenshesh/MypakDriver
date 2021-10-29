@@ -2,15 +2,31 @@ package com.mypakdriver.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -22,11 +38,19 @@ import com.mypakdriver.utils.ProjectUtil;
 
 import java.util.HashMap;
 
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
+
 public class SignUpAct extends AppCompatActivity {
 
+    private static final int REQUEST_CODE = 1234;
     Context mContext = SignUpAct.this;
     ActivitySignupBinding binding;
     private String registerId;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private Location currentLocation=null;
+    private LocationRequest mLocationRequest;
+    private long UPDATE_INTERVAL = 3000;
+    private long FASTEST_INTERVAL = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +58,12 @@ public class SignUpAct extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_signup);
         ProjectUtil.changeStatusBarColor(SignUpAct.this);
 
-        FirebaseInstanceId.getInstance().getInstanceId()
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mContext);
+        fetchLocation();
+
+        FirebaseInstanceId
+                .getInstance()
+                .getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
@@ -53,6 +82,79 @@ public class SignUpAct extends AppCompatActivity {
         init();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchLocation();
+    }
+
+    private void fetchLocation() {
+        if (ActivityCompat.checkSelfPermission (
+                mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(SignUpAct.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_CODE);
+            return;
+        }
+
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    // isCurrentLocation = true;
+                    currentLocation = location;
+                    Log.e("ivCurrentLocation", "location = " + location);
+                } else {
+                    startLocationUpdates();
+                    Log.e("ivCurrentLocation", "location = " + location);
+                }
+            }
+        });
+
+    }
+
+    // Trigger new location updates at interval
+    protected void startLocationUpdates() {
+
+        Log.e("hdasfkjhksdf", "Location = ");
+
+        // Create the location request to start receiving updates
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
+
+        // Create LocationSettingsRequest object using location request
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(mLocationRequest);
+        LocationSettingsRequest locationSettingsRequest = builder.build();
+
+        // Check whether location settings are satisfied
+        // https://developers.google.com/android/reference/com/google/android/gms/location/SettingsClient
+        SettingsClient settingsClient = LocationServices.getSettingsClient(this);
+        settingsClient.checkLocationSettings(locationSettingsRequest);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, new LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        if (locationResult != null) {
+                            Log.e("hdasfkjhksdf", "Location = " + locationResult.getLastLocation());
+                            currentLocation = locationResult.getLastLocation();
+                        } else {
+                            fetchLocation();
+                        }
+                    }
+                },
+                Looper.myLooper());
+    }
+
+
     private void init() {
 
         binding.btSignUp.setOnClickListener(v -> {
@@ -82,6 +184,13 @@ public class SignUpAct extends AppCompatActivity {
                 params.put("email",binding.etEmail.getText().toString().trim());
                 params.put("mobile",binding.etPhone.getText().toString().trim());
                 params.put("register_id",registerId);
+                if(currentLocation != null) {
+                    params.put("lat", String.valueOf(currentLocation.getLatitude()));
+                    params.put("lon", String.valueOf(currentLocation.getLongitude()));
+                } else {
+                    params.put("lat", "");
+                    params.put("lon", "");
+                }
                 params.put("password",binding.etPass.getText().toString().trim());
                 params.put("type","DRIVER");
 

@@ -2,6 +2,7 @@ package com.mypakdriver.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
@@ -28,6 +29,7 @@ import com.mypakdriver.models.ModelLogin;
 import com.mypakdriver.utils.Api;
 import com.mypakdriver.utils.ApiFactory;
 import com.mypakdriver.utils.AppConstant;
+import com.mypakdriver.utils.MyService;
 import com.mypakdriver.utils.ProjectUtil;
 import com.mypakdriver.utils.SharedPref;
 
@@ -179,6 +181,7 @@ public class VerifyAct extends AppCompatActivity {
                         sharedPref.setBooleanValue(AppConstant.IS_REGISTER,true);
                         sharedPref.setUserDetails(AppConstant.USER_DETAILS,modelLogin);
 
+                        ContextCompat.startForegroundService(mContext,new Intent(getApplicationContext(), MyService.class));
                         startActivity(new Intent(mContext,HomeAct.class));
                         finish();
 

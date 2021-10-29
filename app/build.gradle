@@ -7,13 +7,13 @@ android {
 
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    
+
     defaultConfig {
         applicationId "com.mypakdriver"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -70,6 +70,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.hbb20:ccp:2.3.9'
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'

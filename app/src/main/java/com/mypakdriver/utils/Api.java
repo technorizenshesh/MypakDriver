@@ -1,3 +1,4 @@
+
 package com.mypakdriver.utils;
 
 import java.util.Map;
@@ -84,6 +85,14 @@ public interface Api {
     @FormUrlEncoded
     @POST("get_all_shipping_request")
     Call<ResponseBody> getAllShRequestApiCall(@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("getUserRequests")
+    Call<ResponseBody> getAllUserRequestApiCall(@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("driver_accept_and_Cancel_request")
+    Call<ResponseBody> driverAcceptRejectApiCall(@FieldMap Map<String, String> params);
 
     @FormUrlEncoded
     @POST("get_my_transport")

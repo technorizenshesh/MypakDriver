@@ -93,6 +93,7 @@ public class AdapterShipBids extends RecyclerView.Adapter<AdapterShipBids.MyBids
         dialogBinding.btRemove.setOnClickListener(v -> {
             removeBidApi(data,position,dialog);
         });
+
         dialog.show();
     }
 

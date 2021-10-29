@@ -28,7 +28,7 @@ public class MyProfileAct extends AppCompatActivity {
     private void init() {
 
         binding.ivMySendings.setOnClickListener(v -> {
-            startActivity(new Intent(mContext,ParcelTransportAct.class));
+            startActivity(new Intent(mContext,DriverTrackAct.class));
         });
 
         binding.cvLogout.setOnClickListener(v -> {

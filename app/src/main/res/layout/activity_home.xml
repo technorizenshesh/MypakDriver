@@ -49,6 +49,22 @@
                     android:layout_height="@dimen/_1sdp"
                     android:background="@color/gray"/>
 
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tabLayout"
+                    app:tabTextAppearance="@style/MyCustomTextAppearance"
+                    app:tabTextColor="@color/black"
+                    app:tabIndicatorHeight="@dimen/_4sdp"
+                    app:tabBackground="@drawable/tab_background"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabIndicatorColor="@color/orange3"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/gray"/>
+
                 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

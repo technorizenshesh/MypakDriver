@@ -2,6 +2,7 @@ package com.mypakdriver.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
@@ -24,6 +25,7 @@ import com.mypakdriver.utils.ApiFactory;
 import com.mypakdriver.utils.App;
 import com.mypakdriver.utils.AppConstant;
 import com.mypakdriver.utils.InternetConnection;
+import com.mypakdriver.utils.MyService;
 import com.mypakdriver.utils.ProjectUtil;
 import com.mypakdriver.utils.SharedPref;
 
@@ -65,7 +67,7 @@ public class LoginAct extends AppCompatActivity {
                         String token = task.getResult().getToken();
                         registerId = token;
                         Log.e("registerIdregisterId","registerId = " + registerId);
-
+                        // Toast.makeText(mContext, "registerId = " + registerId, Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -129,6 +131,7 @@ public class LoginAct extends AppCompatActivity {
                         sharedPref.setUserDetails(AppConstant.USER_DETAILS,modelLogin);
 
                         if(modelLogin.getResult().getType().equals(AppConstant.DRIVER)) {
+                            ContextCompat.startForegroundService(mContext,new Intent(getApplicationContext(), MyService.class));
                             startActivity(new Intent(mContext,HomeAct.class));
                             finish();
                         } else {

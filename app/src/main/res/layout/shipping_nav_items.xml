@@ -49,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/my_transports"
+                android:visibility="gone"
                 android:fontFamily="@font/circular_bold"
                 android:textColor="@color/black"
                 android:padding="@dimen/_10sdp"
@@ -78,6 +79,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
+                android:visibility="gone"
                 android:background="@color/gray"/>
 
             <TextView
@@ -88,6 +90,7 @@
                 android:fontFamily="@font/circular_bold"
                 android:textColor="@color/black"
                 android:padding="@dimen/_10sdp"
+                android:visibility="gone"
                 android:background="?android:selectableItemBackground"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"

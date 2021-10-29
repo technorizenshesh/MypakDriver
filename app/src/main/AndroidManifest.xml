@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -27,47 +28,57 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MypakDriver">
 
-        <activity android:name=".activities.ParcelTransportAct"
+        <activity android:name=".activities.DriverTrackAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
         <activity android:name=".activities.MyProfileAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity android:name=".activities.ChatListAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity android:name=".activities.ChatingAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".activities.ChangePasAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".activities.ForgotAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.ParcelDetailAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.VerifyAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.HomeAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.SignUpAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.LoginAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".activities.WelcomeAct"
             android:screenOrientation="portrait"
@@ -89,7 +100,34 @@
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
 
-        <meta-data android:name="com.google.android.gms.version"
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/app_logo_icon" /> <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming notification message. -->
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/purple_700" /> <!-- Set fcm default channel -->
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+
+        <service
+            android:name=".utils.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <uses-library
@@ -99,6 +137,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_api_key" />
+
     </application>
 
 </manifest>

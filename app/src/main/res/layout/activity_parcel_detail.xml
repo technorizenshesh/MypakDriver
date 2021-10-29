@@ -6,7 +6,7 @@
     <data>
         <variable
             name="ship"
-            type="com.mypakdriver.models.ModelShipDetail.Result" />
+            type="com.mypakdriver.models.ModelOrderHistory.Result" />
     </data>
 
     <com.mypakdriver.utils.CustomScrollView
@@ -63,10 +63,108 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        app:riv_corner_radius="@dimen/_10sdp"
+                        android:id="@+id/ivParcelImg"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:src="@color/gray"
+                        app:riv_border_width="1dp"
+                        app:riv_border_color="@color/black"
+                        imageurl="@{ship.parcel_image}"
+                        android:layout_height="@dimen/_120sdp"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:text="@string/title"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:inputType="textVisiblePassword" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/circular_regular"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_9sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@{ship.title}"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:text="@string/description"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:inputType="textVisiblePassword" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/circular_regular"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_9sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@{ship.description}"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:text="@string/recipient_name"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:inputType="textVisiblePassword" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/circular_regular"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_9sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@{ship.recipient_name}"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:text="@string/recipient_s_mobile_number"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:inputType="textVisiblePassword" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/circular_regular"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textSize="@dimen/_9sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@{ship.recipient_mobile_number}"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/circular_bold"
                         android:text="@string/pickup_address"
                         android:textSize="@dimen/_10sdp"
@@ -123,7 +221,7 @@
                                 android:textStyle="bold"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/circular_bold"
-                                android:text="@string/pickup_date"
+                                android:text="@string/date_and_time"
                                 android:textSize="@dimen/_10sdp"
                                 android:textColor="@color/black"
                                 android:inputType="textVisiblePassword" />
@@ -136,7 +234,7 @@
                                 android:textSize="@dimen/_9sdp"
                                 android:drawableLeft="@drawable/ic_date_icon"
                                 android:drawablePadding="@dimen/_5sdp"
-                                android:text="@{ship.pickup_date}"
+                                android:text="@{ship.parcel_time}"
                                 android:textColor="@color/gray" />
 
                         </LinearLayout>
@@ -153,7 +251,7 @@
                                 android:textStyle="bold"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/circular_bold"
-                                android:text="@string/dropoff_date"
+                                android:text="@string/quantity"
                                 android:textSize="@dimen/_10sdp"
                                 android:textColor="@color/black"
                                 android:inputType="textVisiblePassword" />
@@ -164,267 +262,96 @@
                                 android:fontFamily="@font/circular_regular"
                                 android:layout_marginTop="@dimen/_3sdp"
                                 android:textSize="@dimen/_9sdp"
-                                android:drawableLeft="@drawable/ic_date_icon"
                                 android:drawablePadding="@dimen/_5sdp"
-                                android:text="@{ship.dropoff_date}"
+                                android:text="@{ship.parcel_quantity}"
+                                android:textColor="@color/orange" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/circular_bold"
+                                android:text="@string/total_price"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="@color/black"
+                                android:inputType="textVisiblePassword" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/circular_regular"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:textSize="@dimen/_9sdp"
+                                android:text="@{'$'+ship.total_price}"
                                 android:textColor="@color/gray" />
 
                         </LinearLayout>
 
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/circular_bold"
-                        android:text="@string/item_detail"
-                        android:textSize="@dimen/_10sdp"
-                        android:textColor="@color/black"
-                        android:inputType="textVisiblePassword" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/circular_regular"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:textSize="@dimen/_9sdp"
-                        android:drawableLeft="@drawable/edit_parcel"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:text="@{ship.item_detail}"
-                        android:textColor="@color/gray" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/circular_bold"
-                        android:text="@string/delivery_instructions"
-                        android:textSize="@dimen/_10sdp"
-                        android:textColor="@color/black"
-                        android:inputType="textVisiblePassword" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/circular_regular"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:textSize="@dimen/_9sdp"
-                        android:drawableLeft="@drawable/instruction_detail"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:text="@{ship.dev_instruction}"
-                        android:textColor="@color/gray" />
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Quantity : "
                                 android:textStyle="bold"
-                                android:layout_centerVertical="true"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/circular_bold"
+                                android:text="@string/preferred_vehicle"
                                 android:textSize="@dimen/_10sdp"
                                 android:textColor="@color/black"
                                 android:inputType="textVisiblePassword" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_5sdp"
-                                android:textStyle="bold"
-                                android:layout_centerVertical="true"
                                 android:fontFamily="@font/circular_regular"
-                                android:text="@{ship.parcel_quantity}"
-                                android:textSize="@dimen/_10sdp"
-                                android:textColor="@color/orange3"
-                                android:inputType="textVisiblePassword" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{ship.status}"
-                            android:includeFontPadding="false"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            android:paddingRight="@dimen/_15sdp"
-                            android:paddingLeft="@dimen/_15sdp"
-                            android:paddingTop="@dimen/_6sdp"
-                            android:paddingBottom="@dimen/_6sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/orange_outline_back"
-                            android:fontFamily="@font/circular_bold"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:textSize="@dimen/_11sdp"
-                            android:textColor="@color/green" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_height="@dimen/_200sdp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/circular_bold"
-                android:text="@string/applied_bids"
-                android:textAllCaps="false"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
-                android:textStyle="bold" />
-
-            <androidx.cardview.widget.CardView
-                android:clickable="true"
-                android:id="@+id/cvBids"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:contentPadding="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:elevation="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/llBids"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="5"
-                            android:background="@drawable/black_outline_back"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:singleLine="true"
-                                android:visibility="gone"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:padding="@dimen/_8sdp"
-                                android:text="Price"/>
-
-                            <View
-                                android:layout_width="@dimen/_1sdp"
-                                android:layout_height="match_parent"
-                                android:visibility="gone"
-                                android:background="@color/orange"/>
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:layout_centerVertical="true"
-                                android:singleLine="true"
-                                android:fontFamily="@font/circular_bold"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_10sdp"
-                                android:textColor="@color/black"
-                                android:padding="@dimen/_8sdp"
-                                android:text="@string/price"/>
-
-                            <View
-                                android:layout_width="@dimen/_1sdp"
-                                android:layout_height="match_parent"
-                                android:background="@color/black"/>
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:layout_centerVertical="true"
-                                android:fontFamily="@font/circular_bold"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_10sdp"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:padding="@dimen/_8sdp"
-                                android:text="@string/pickup_date" />
-
-                            <View
-                                android:layout_width="@dimen/_1sdp"
-                                android:layout_height="match_parent"
-                                android:background="@color/black"/>
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="2"
-                                android:singleLine="true"
-                                android:gravity="center"
-                                android:layout_centerVertical="true"
-                                android:fontFamily="@font/circular_bold"
-                                android:textColor="@color/black"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_10sdp"
-                                android:padding="@dimen/_8sdp"
-                                android:text="@string/dropoff_date"/>
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:textSize="@dimen/_9sdp"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:text="@{ship.vehicle_id}"
+                                android:textColor="@color/orange" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btNavigationToMap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:id="@+id/rvBids"/>
+                        android:background="@drawable/orange_back_10"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:fontFamily="@font/circular_bold"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/navigate_to_map" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btBidNow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/orange_back_10"
-                android:textColor="@color/white"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:fontFamily="@font/circular_bold"
-                android:layout_marginLeft="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_40sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:text="@string/bid_now" />
 
         </LinearLayout>
 

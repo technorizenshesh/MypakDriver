@@ -120,7 +120,6 @@ public class MyService extends Service {
         }
     }
 
-
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -153,6 +152,7 @@ public class MyService extends Service {
                         }
                     }
                 }
+
         );
 
     }
@@ -245,9 +245,9 @@ public class MyService extends Service {
                 sendBroadcast(intent1);
 //              SessionManager.writeString(getApplicationContext(), SessionManager.USER_LATITUDE, "");
 //              SessionManager.writeString(getApplicationContext(), SessionManager.USER_LONGITUDE, "");
-                //  latTextView.setText(mLastLocation.getLatitude()+"");
-                //  lonTextView.setText(mLastLocation.getLongitude()+"");
-                //  Toast.makeText(LocationService.this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
+                // latTextView.setText(mLastLocation.getLatitude()+"");
+                // lonTextView.setText(mLastLocation.getLongitude()+"");
+                // Toast.makeText(LocationService.this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -258,9 +258,7 @@ public class MyService extends Service {
         long ct = System.currentTimeMillis(); // get current time
         Intent restartService = new Intent(getApplicationContext(), MyService.class);
         PendingIntent restartServicePI = PendingIntent.getService (
-                getApplicationContext(), 0, restartService,
-                0);
-
+                getApplicationContext(),0,restartService,0);
         AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
         mgr.setRepeating(AlarmManager.RTC_WAKEUP, ct, 1 * 4000, restartServicePI);
     }
@@ -268,7 +266,7 @@ public class MyService extends Service {
     @Override
     public void onDestroy() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            stopForeground(true); //true will remove notification
+            stopForeground(true); // true will remove notification
         }
     }
 
